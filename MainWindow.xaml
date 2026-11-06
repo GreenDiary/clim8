@@ -1,0 +1,173 @@
+<Window x:Class="Clim8.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Clim8.Windows"
+        Title="clim8"
+        Width="294"
+        Height="360"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="True"
+        Topmost="False"
+        WindowStartupLocation="Manual"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True">
+  <Window.Resources>
+    <SolidColorBrush x:Key="CardBrush" Color="#FF111A2B"/>
+    <SolidColorBrush x:Key="PrimaryTextBrush" Color="#FFF5F7FB"/>
+    <SolidColorBrush x:Key="SecondaryTextBrush" Color="#FF8994A8"/>
+    <SolidColorBrush x:Key="DividerBrush" Color="#FF263146"/>
+    <Style x:Key="PopupButtonStyle" TargetType="{x:Type Button}">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Padding" Value="5,3"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Border x:Name="ButtonSurface"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="10"
+                    Padding="{TemplateBinding Padding}">
+              <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="ButtonSurface" Property="Background" Value="#332A3854"/>
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="ButtonSurface" Property="Background" Value="#5534455E"/>
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="ButtonSurface" Property="Opacity" Value="0.5"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
+
+  <Grid>
+    <Border x:Name="Card"
+            Background="{DynamicResource CardBrush}"
+            BorderBrush="{DynamicResource DividerBrush}"
+            BorderThickness="1"
+            CornerRadius="21"
+            Padding="12"
+            ClipToBounds="True">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="33"/>
+          <RowDefinition Height="98"/>
+          <RowDefinition Height="76"/>
+          <RowDefinition Height="6"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="16"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <StackPanel VerticalAlignment="Center">
+            <Button x:Name="CityButton"
+                    Content="Lisbon"
+                    Click="CityButton_Click"
+                    Style="{StaticResource PopupButtonStyle}"
+                    HorizontalAlignment="Left"
+                    Padding="6,3"
+                    Foreground="{DynamicResource PrimaryTextBrush}"
+                    FontSize="13"
+                    FontWeight="SemiBold"
+                    Cursor="Hand"/>
+            <TextBlock x:Name="DateTimeText"
+                       Text="—"
+                       FontSize="9"
+                       Foreground="{DynamicResource SecondaryTextBrush}"
+                       Margin="6,0,0,0"/>
+          </StackPanel>
+          <Button x:Name="CloseButton"
+                  Grid.Column="1"
+                  Content="×"
+                  Click="CloseButton_Click"
+                  Style="{StaticResource PopupButtonStyle}"
+                  Width="26"
+                  Height="26"
+                  Padding="0"
+                  Foreground="{DynamicResource SecondaryTextBrush}"
+                  FontSize="17"
+                  VerticalAlignment="Center"
+                  Cursor="Hand"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+          <StackPanel VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+              <Button x:Name="TemperatureButton"
+                      Click="TemperatureButton_Click"
+                      Style="{StaticResource PopupButtonStyle}"
+                      HorizontalAlignment="Left"
+                      Padding="7,0,9,1"
+                      Cursor="Hand">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                  <TextBlock x:Name="TemperatureText"
+                             Text="—°"
+                             FontSize="51"
+                             FontWeight="Light"
+                             LineHeight="54"
+                             Foreground="{DynamicResource PrimaryTextBrush}"/>
+                  <TextBlock x:Name="TemperatureUnitText"
+                             Text="C"
+                             FontSize="15"
+                             Foreground="{DynamicResource SecondaryTextBrush}"
+                             VerticalAlignment="Bottom"
+                             Margin="2,0,0,9"/>
+                </StackPanel>
+              </Button>
+              <local:WeatherIconImage x:Name="HeaderIcon"
+                                      IconName="cloudy"
+                                      Width="46"
+                                      Height="46"
+                                      Margin="2,0,0,0"
+                                      VerticalAlignment="Center"/>
+            </StackPanel>
+            <TextBlock x:Name="SummaryText"
+                       Text="Loading weather…"
+                       FontSize="9.5"
+                       Foreground="{DynamicResource PrimaryTextBrush}"
+                       TextWrapping="Wrap"
+                       MaxHeight="32"
+                       Margin="7,0,4,0"/>
+          </StackPanel>
+        </Grid>
+
+        <UniformGrid x:Name="HourlyPanel"
+                     Grid.Row="2"
+                     Columns="6"
+                     VerticalAlignment="Center"/>
+
+        <Border Grid.Row="3"
+                Height="1"
+                Background="{DynamicResource DividerBrush}"
+                VerticalAlignment="Center"/>
+
+        <StackPanel x:Name="DailyPanel"
+                    Grid.Row="4"
+                    VerticalAlignment="Center"/>
+
+        <TextBlock x:Name="StatusText"
+                   Grid.Row="5"
+                   Text="Google Weather"
+                   FontSize="8"
+                   Foreground="{DynamicResource SecondaryTextBrush}"
+                   VerticalAlignment="Bottom"/>
+
+      </Grid>
+    </Border>
+  </Grid>
+</Window>
+

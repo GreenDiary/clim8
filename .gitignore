@@ -1,0 +1,27 @@
+# Build outputs
+bin/
+obj/
+publish/
+out/
+
+# User-specific Visual Studio / IDE files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.idea/
+.vscode/
+
+# Credentials, API keys, and local runtime settings (NEVER COMMIT)
+.env
+*.env
+.env.*
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+settings.json
+*.key
+*.pem
+*.pfx
+*.publishsettings

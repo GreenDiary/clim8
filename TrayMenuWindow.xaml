@@ -1,0 +1,78 @@
+<Window x:Class="Clim8.Windows.TrayMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="clim8"
+        Width="150"
+        Height="126"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        ShowActivated="True"
+        Topmost="True"
+        WindowStartupLocation="Manual"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        PreviewKeyDown="Window_PreviewKeyDown">
+  <Window.Resources>
+    <SolidColorBrush x:Key="MenuCardBrush" Color="#FF111A2B"/>
+    <SolidColorBrush x:Key="MenuTextBrush" Color="#FFF5F7FB"/>
+    <SolidColorBrush x:Key="MenuBorderBrush" Color="#FF263146"/>
+    <Style x:Key="MenuButtonStyle" TargetType="{x:Type Button}">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Foreground" Value="{StaticResource MenuTextBrush}"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Padding" Value="10,5"/>
+      <Setter Property="HorizontalContentAlignment" Value="Left"/>
+      <Setter Property="FontSize" Value="12"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Border x:Name="ItemSurface"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="10"
+                    Padding="{TemplateBinding Padding}">
+              <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="ItemSurface" Property="Background" Value="#FF263146"/>
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="ItemSurface" Property="Background" Value="#FF34435E"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
+
+  <Border Background="{StaticResource MenuCardBrush}"
+          BorderBrush="{StaticResource MenuBorderBrush}"
+          BorderThickness="1"
+          CornerRadius="17"
+          Padding="6"
+          ClipToBounds="True">
+    <StackPanel>
+      <Button Content="Open clim8"
+              Style="{StaticResource MenuButtonStyle}"
+              Height="34"
+              Margin="0,0,0,2"
+              Click="OpenButton_Click"/>
+      <Button Content="Settings"
+              Style="{StaticResource MenuButtonStyle}"
+              Height="34"
+              Margin="0,0,0,2"
+              Click="SettingsButton_Click"/>
+      <Button Content="Quit"
+              Style="{StaticResource MenuButtonStyle}"
+              Height="34"
+              Click="QuitButton_Click"/>
+    </StackPanel>
+  </Border>
+</Window>
+

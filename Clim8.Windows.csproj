@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Clim8</AssemblyName>
+    <RootNamespace>Clim8.Windows</RootNamespace>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <ApplicationIcon>assets\clim8.ico</ApplicationIcon>
+    <IncludeWindowsSDKRefFrameworkReferences>true</IncludeWindowsSDKRefFrameworkReferences>
+    <WindowsSdkPackageVersion>10.0.26100.87</WindowsSdkPackageVersion>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Update="assets\clim8.ico" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="assets\weather\*.png" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="assets\weather\ATTRIBUTION.txt" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="assets\icons\*.png" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

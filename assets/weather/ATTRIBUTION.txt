@@ -1,0 +1,2 @@
+Weather condition PNGs are rendered from the supplied weather-icons SVG pack.
+Original SVG credit: (c) ammap.com | SVG weather icons.
