@@ -10,7 +10,7 @@ A compact Windows desktop weather client featuring a dark forecast card, a match
 
 ## Quick Install (Windows x64 Release `1.0.0`)
 
-1. Download **`Clim8-Windows-x64-v1.0.0.zip`** from the [GitHub Releases](https://github.com/GreenDiary/clim8/releases/tag/1.0.0) page and extract all files into a folder on your system (keep `Clim8.exe` alongside its `.dll`, `.json`, and `assets/` dependencies).
+1. Download **`Clim8-Windows-x64-v1.0.0.zip`** from the [GitHub Releases](https://github.com/GreenDiary/clim8/releases/tag/v1.0.0) page and extract all files into a folder on your system (keep `Clim8.exe` alongside its `.dll`, `.json`, and `assets/` dependencies).
 2. Ensure the [.NET 10.0 Windows Desktop Runtime (x64)](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) is installed.
 3. Configure your Google Weather API key as a user environment variable in PowerShell (see [Google Weather API Key Setup](https://developers.google.com/maps/documentation/weather/get-api-key)):
 
