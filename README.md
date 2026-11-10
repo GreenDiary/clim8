@@ -8,14 +8,17 @@ A compact Windows desktop weather client featuring a dark forecast card, a match
 | :---: | :---: |
 | ![Clim8 Weather Card](assets/screenshots/weather-card.png) | ![Clim8 Settings Panel](assets/screenshots/clim8-settings.png) |
 
-## Quick Install (Windows x64 Release `1.0.0`)
+## Quick Install For Users (Windows-x64)
 
 Download Clim8-Setup-v1.0.0.exe (55 MB) from Release page, it is a single file with the app, all its DLLs, and the .NET 10 Desktop Runtime (10.0.12) bundled in. Nothing else needs to be installed, and it doesn’t need admin rights.
 
 Install location: it installs to %LOCALAPPDATA%\Programs\Clim8 and adds a Start Menu shortcut. At the end you can launch Clim8 and tick a desktop shortcut.
+
 Uninstall: it shows up in Windows Settings → Apps. The uninstaller also removes the “start with Windows” entry and asks before deleting your saved settings.
+
 Silent mode: run it with /S for a silent install.
-API key page: the installer has an optional page to paste your Google Weather API key. It saves the key as CLIM8_GOOGLE_WEATHER_API_KEY for your Windows account.
+
+API key page: the installer has an page to paste your Google Weather API key. It saves the key as CLIM8_GOOGLE_WEATHER_API_KEY for your Windows account.
 
  Launch **`Clim8-Setup-v1.0.0.exe`** and grant Windows location permission when prompted.
 
